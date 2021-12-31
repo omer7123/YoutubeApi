@@ -4,6 +4,7 @@ import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import androidx.lifecycle.ViewModelProvider
+import com.ripalay.youtubeapi.`object`.Constant
 import com.ripalay.youtubeapi.base.BaseActivity
 import com.ripalay.youtubeapi.databinding.ActivityPlaylistBinding
 import com.ripalay.youtubeapi.model.Playlist
@@ -34,7 +35,7 @@ class PlaylistActivity : BaseActivity<PlaylistViewModel, ActivityPlaylistBinding
             adapter.setOnItem(object : PlaylistAdapter.onClick {
                 override fun onItem(position: Int) {
                     intent.putExtra(
-                        "ID", playlist.items[position].id
+                        Constant.ID, playlist.items[position].id
                     )
                     startActivity(intent)
                 }
