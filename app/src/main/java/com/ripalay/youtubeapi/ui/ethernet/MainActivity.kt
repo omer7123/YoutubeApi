@@ -1,21 +1,11 @@
 package com.ripalay.youtubeapi.ui.ethernet
 
-import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
-import android.net.Network
-import android.net.NetworkCapabilities
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import androidx.lifecycle.ViewModelProvider
-import com.ripalay.youtubeapi.R
-import com.ripalay.youtubeapi.base.BaseActivity
+import com.ripalay.youtubeapi.core.ui.BaseActivity
 import com.ripalay.youtubeapi.databinding.ActivityMainBinding
 import com.ripalay.youtubeapi.ui.playlist.PlaylistActivity
-import java.net.InetAddress
 
 class MainActivity : BaseActivity<EthernetViewModel, ActivityMainBinding>() {
 

@@ -1,12 +1,8 @@
 package com.ripalay.youtubeapi.ui.detail
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.lifecycle.ViewModelProvider
-import com.ripalay.youtubeapi.R
-import com.ripalay.youtubeapi.base.BaseActivity
-import com.ripalay.youtubeapi.base.BaseViewModel
+import com.ripalay.youtubeapi.core.ui.BaseActivity
 import com.ripalay.youtubeapi.databinding.ActivityDetailBinding
 import com.ripalay.youtubeapi.extensions.showToast
 

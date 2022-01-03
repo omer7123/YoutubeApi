@@ -1,4 +1,4 @@
-package com.ripalay.youtubeapi.base
+package com.ripalay.youtubeapi.core.ui
 
 import androidx.lifecycle.ViewModel
 

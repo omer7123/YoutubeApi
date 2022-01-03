@@ -3,13 +3,10 @@ package com.ripalay.youtubeapi.ui.ethernet
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.os.Handler
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.ripalay.youtubeapi.base.BaseViewModel
-import java.net.InetAddress
-import java.net.InetAddress.getByName
+import com.ripalay.youtubeapi.core.ui.BaseViewModel
 
 class EthernetViewModel : BaseViewModel() {
     private val isConnected = MutableLiveData<Boolean>()

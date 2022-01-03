@@ -1,7 +1,7 @@
-package com.ripalay.youtubeapi.remote
+package com.ripalay.youtubeapi.core.network
 
-import android.graphics.Bitmap
 import com.ripalay.youtubeapi.BuildConfig.BASE_URL
+import com.ripalay.youtubeapi.data.remote.YoutubeApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit
 
 class RetrofitClient {
     companion object{
-        fun create(): YoutubeApi{
+        fun create(): YoutubeApi {
             val interceptor = HttpLoggingInterceptor()
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
 

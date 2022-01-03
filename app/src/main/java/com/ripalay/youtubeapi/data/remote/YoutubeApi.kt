@@ -1,6 +1,6 @@
-package com.ripalay.youtubeapi.remote
+package com.ripalay.youtubeapi.data.remote
 
-import com.ripalay.youtubeapi.model.Playlist
+import com.ripalay.youtubeapi.data.remote.model.Playlist
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

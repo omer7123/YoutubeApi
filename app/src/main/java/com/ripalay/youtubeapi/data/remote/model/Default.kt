@@ -1,4 +1,4 @@
-package com.ripalay.youtubeapi.model
+package com.ripalay.youtubeapi.data.remote.model
 
 data class Default(
     val height: Int?,
