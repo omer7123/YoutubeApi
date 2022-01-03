@@ -26,6 +26,10 @@ class PlaylistActivity : BaseActivity<PlaylistViewModel, ActivityPlaylistBinding
         AppPrefs(this).isOnBoard = true
 
         AppPrefs(this).isOnBoard.toString()
+
+
+
+
     }
 
     override fun initViewModel() {
