@@ -8,6 +8,7 @@ import com.ripalay.youtubeapi.core.ui.BaseActivity
 import com.ripalay.youtubeapi.data.local.AppPrefs
 import com.ripalay.youtubeapi.databinding.ActivityPlaylistBinding
 import com.ripalay.youtubeapi.data.remote.model.Playlist
+import com.ripalay.youtubeapi.repository.Repository
 import com.ripalay.youtubeapi.ui.detail.DetailActivity
 
 class PlaylistActivity : BaseActivity<PlaylistViewModel, ActivityPlaylistBinding>() {
@@ -42,9 +43,7 @@ class PlaylistActivity : BaseActivity<PlaylistViewModel, ActivityPlaylistBinding
                     )
                     startActivity(intent)
                 }
-
             })
-
         }
     }
 
