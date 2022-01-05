@@ -32,7 +32,7 @@ class Repository {
 
     fun createPlay(id: String?): LiveData<Playlist> {
         val data = MutableLiveData<Playlist>()
-        App().youtubeApi.getPlaylist(Constant.PART, id, BuildConfig.API_KEY,"30")
+        App().youtubeApi.getPlaylist(Constant.PART, id, BuildConfig.API_KEY,"50")
             .enqueue(object : retrofit2.Callback<Playlist> {
                 override fun onResponse(call: Call<Playlist>, response: Response<Playlist>) {
                     if (response.isSuccessful && response.body() != null) {

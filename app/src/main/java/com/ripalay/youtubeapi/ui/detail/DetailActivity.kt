@@ -26,6 +26,7 @@ class DetailActivity : BaseActivity<DetailViewModel, ActivityDetailBinding>() {
         super.initViewModel()
         viewModel.getPlay(intent.getStringExtra(Constant.ID)).observe(this) {
             item = it
+            binding.titleTv.text = intent.getStringExtra(Constant.TITLE)
             binding.seriesTv.text = (item.pageInfo.totalResults + " video series")
             adapter = DetailAdapter(item.items)
             binding.seriesRv.adapter = adapter

@@ -39,8 +39,9 @@ class PlaylistActivity : BaseActivity<PlaylistViewModel, ActivityPlaylistBinding
             adapter.setOnItem(object : PlaylistAdapter.onClick {
                 override fun onItem(position: Int) {
                     intent.putExtra(
-                        Constant.ID, playlist.items[position].id
+                        Constant.ID, playlist.items[position].id,
                     )
+                    intent.putExtra(Constant.TITLE, playlist.items[position].snippet.title)
                     startActivity(intent)
                 }
             })
