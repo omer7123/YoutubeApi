@@ -14,23 +14,23 @@
         android:theme="@style/Theme.YoutubeApi"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.third.ThirdActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.ethernet.MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".ui.detail.DetailActivity"
             android:exported="false" />
         <activity
             android:name=".ui.playlist.PlaylistActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

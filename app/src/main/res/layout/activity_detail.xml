@@ -90,11 +90,12 @@
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/ic_play_button"
+            android:layout_width="wrap_content"
+            android:id="@+id/fab_btn"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_start"
+            app:backgroundTint="@color/red"
             app:layout_anchor="@id/app.appbar"
             app:layout_anchorGravity="bottom|right|end" />
 
@@ -144,5 +145,13 @@
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
+    <ProgressBar
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/progress"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

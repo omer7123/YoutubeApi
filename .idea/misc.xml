@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Studio Project/YoutubeApi/app/src/main/res/drawable/ic_play.xml" value="0.26614583333333336" />
         <entry key="..\:/Android Studio Project/YoutubeApi/app/src/main/res/layout-v28/activity_main.xml" value="0.25" />
         <entry key="..\:/Android Studio Project/YoutubeApi/app/src/main/res/layout/activity_detail.xml" value="0.22566995768688294" />
         <entry key="..\:/Android Studio Project/YoutubeApi/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Android Studio Project/YoutubeApi/app/src/main/res/layout/activity_playlist.xml" value="0.25" />
+        <entry key="..\:/Android Studio Project/YoutubeApi/app/src/main/res/layout/activity_third.xml" value="0.2203125" />
         <entry key="..\:/Android Studio Project/YoutubeApi/app/src/main/res/layout/item_playlist.xml" value="0.234375" />
         <entry key="..\:/Android Studio Project/YoutubeApi/app/src/main/res/layout/item_series.xml" value="0.234375" />
       </map>

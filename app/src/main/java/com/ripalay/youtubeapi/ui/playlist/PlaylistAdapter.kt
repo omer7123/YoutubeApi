@@ -7,18 +7,16 @@ import com.ripalay.youtubeapi.databinding.ItemPlaylistBinding
 import com.ripalay.youtubeapi.extensions.load
 import com.ripalay.youtubeapi.data.remote.model.Items
 
-class PlaylistAdapter(private val playlist: List<Items>) :
+class PlaylistAdapter(
+    private val playlist: List<Items>,
+    private val clickListener: (item: Items) -> Unit
+) :
     RecyclerView.Adapter<PlaylistAdapter.ViewHolder>() {
-private lateinit var mListener: onClick
-
-    fun setOnItem(listener: onClick){
-        mListener = listener
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
             ItemPlaylistBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding, mListener)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -30,24 +28,19 @@ private lateinit var mListener: onClick
     }
 
 
-    class ViewHolder(private val binding: ItemPlaylistBinding, listener: onClick) :
+    inner class ViewHolder(private val binding: ItemPlaylistBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(playlist: Items) {
             binding.numberTv.text =
                 (playlist.contentDetails?.itemCount.toString() + " видео в плейлисте")
             binding.avaIv.load(playlist.snippet.thumbnails?.default?.url.toString())
             binding.titleTv.text = playlist.snippet.title
-
-        }
-        init {
-            itemView.setOnClickListener {
-                listener.onItem(adapterPosition)
+            binding.root.setOnClickListener {
+                clickListener(playlist)
             }
+
         }
-
     }
 
-    interface onClick {
-        fun onItem(position: Int)
-    }
+
 }

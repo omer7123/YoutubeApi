@@ -5,16 +5,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ripalay.App
 import com.ripalay.youtubeapi.`object`.Constant
+import com.ripalay.youtubeapi.core.network.result.Resource
 import com.ripalay.youtubeapi.core.ui.BaseViewModel
 import com.ripalay.youtubeapi.data.remote.model.Playlist
 
 class DetailViewModel : BaseViewModel() {
-    fun getIntent(intent: Intent): LiveData<String> {
-        var id = MutableLiveData<String>()
-        id.value = intent.getStringExtra(Constant.ID)
-        return id
-    }
-    fun getPlay(id: String?): LiveData<Playlist> {
+    var loading = MutableLiveData<Boolean>()
+
+
+    fun getPlay(id: String?): LiveData<Resource<Playlist>> {
         return App().repository.createPlay(id)
     }
 }

@@ -7,7 +7,10 @@ import com.ripalay.youtubeapi.data.remote.model.Items
 import com.ripalay.youtubeapi.databinding.ItemSeriesBinding
 import com.ripalay.youtubeapi.extensions.load
 
-class DetailAdapter(private val list: List<Items>): RecyclerView.Adapter<DetailAdapter.ViewHolder>() {
+class DetailAdapter(
+    private val list: List<Items>,
+    private val clickListener: (item: Items) -> Unit
+) : RecyclerView.Adapter<DetailAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,11 +27,14 @@ class DetailAdapter(private val list: List<Items>): RecyclerView.Adapter<DetailA
         return list.size
     }
 
-    class ViewHolder(private val binding: ItemSeriesBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemSeriesBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun onBind(list: Items) {
             binding.titleTv.text = list.snippet.title
             binding.avaIv.load(list.snippet.thumbnails?.default?.url.toString())
-
+            binding.root.setOnClickListener {
+                clickListener(list)
+            }
         }
 
     }

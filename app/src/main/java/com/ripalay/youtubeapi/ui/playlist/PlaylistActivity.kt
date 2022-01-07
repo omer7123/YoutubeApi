@@ -2,13 +2,15 @@ package com.ripalay.youtubeapi.ui.playlist
 
 import android.content.Intent
 import android.view.LayoutInflater
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.ripalay.youtubeapi.`object`.Constant
+import com.ripalay.youtubeapi.core.network.result.Status
 import com.ripalay.youtubeapi.core.ui.BaseActivity
 import com.ripalay.youtubeapi.data.local.AppPrefs
+import com.ripalay.youtubeapi.data.remote.model.Items
 import com.ripalay.youtubeapi.databinding.ActivityPlaylistBinding
 import com.ripalay.youtubeapi.data.remote.model.Playlist
-import com.ripalay.youtubeapi.repository.Repository
 import com.ripalay.youtubeapi.ui.detail.DetailActivity
 
 class PlaylistActivity : BaseActivity<PlaylistViewModel, ActivityPlaylistBinding>() {
@@ -25,28 +27,41 @@ class PlaylistActivity : BaseActivity<PlaylistViewModel, ActivityPlaylistBinding
         viewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
 
         AppPrefs(this).isOnBoard = true
-
         AppPrefs(this).isOnBoard.toString()
     }
 
     override fun initViewModel() {
         super.initViewModel()
+
+        viewModel.loading.observe(this){
+            binding.progress.isVisible = it
+        }
+
         viewModel.getPlayList().observe(this) {
-            playlist = it
-            adapter = PlaylistAdapter(playlist.items)
-            binding.rv.adapter = adapter
-            val intent = Intent(this, DetailActivity::class.java)
-            adapter.setOnItem(object : PlaylistAdapter.onClick {
-                override fun onItem(position: Int) {
-                    intent.putExtra(
-                        Constant.ID, playlist.items[position].id,
-                    )
-                    intent.putExtra(Constant.TITLE, playlist.items[position].snippet.title)
-                    startActivity(intent)
+            when (it.status) {
+                Status.LOADING -> viewModel.loading.postValue(true)
+                Status.SUCCESS -> {
+                    viewModel.loading.postValue(false)
+                    playlist = it.data!!
+                    adapter = PlaylistAdapter(playlist.items,this::clickListener)
+                    binding.rv.adapter = adapter
+
+
                 }
-            })
+                Status.ERROR -> viewModel.loading.postValue(false)
+            }
         }
     }
+    private fun clickListener(items: Items){
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra(
+            Constant.ID, items.id,
+        )
+        intent.putExtra(Constant.TITLE, items.snippet.title)
+        startActivity(intent)
+
+    }
+
 
 
 }
