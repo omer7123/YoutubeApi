@@ -24,4 +24,12 @@ interface YoutubeApi {
         @Query("maxResults") num: String
     ):
             Response<Playlist>
+
+    @GET("videos")
+    suspend fun getVideo(
+        @Query("part") part: String,
+        @Query("id") id: String,
+        @Query("key") key: String
+    ):
+            Response<Playlist>
 }

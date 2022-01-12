@@ -1,14 +1,16 @@
 package com.ripalay
 
 import android.app.Application
-import com.ripalay.youtubeapi.core.network.RetrofitClient
-import com.ripalay.youtubeapi.repository.Repository
+import com.ripalay.youtubeapi.di.koinModules
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 class App : Application() {
-    val repository by lazy {
-        Repository()
+    override fun onCreate() {
+        super.onCreate()
+        startKoin {
+            androidContext(this@App)
+            modules(koinModules)
+        }
     }
-
-    val youtubeApi by lazy { RetrofitClient.create() }
-
 }

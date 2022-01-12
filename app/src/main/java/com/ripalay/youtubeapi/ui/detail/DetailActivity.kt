@@ -12,17 +12,20 @@ import com.ripalay.youtubeapi.data.remote.model.Playlist
 import com.ripalay.youtubeapi.databinding.ActivityDetailBinding
 import com.ripalay.youtubeapi.extensions.showToast
 import com.ripalay.youtubeapi.ui.third.ThirdActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailActivity : BaseActivity<DetailViewModel, ActivityDetailBinding>() {
     private lateinit var item: Playlist
     private lateinit var adapter: DetailAdapter
+
     override fun inflateVB(inflater: LayoutInflater): ActivityDetailBinding {
         return ActivityDetailBinding.inflate(layoutInflater)
     }
 
+    override val viewModel: DetailViewModel by viewModel()
+
     override fun initView() {
         super.initView()
-        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
         viewModel.loading.observe(this) {
             binding.progress.isVisible = it
         }
@@ -39,11 +42,8 @@ class DetailActivity : BaseActivity<DetailViewModel, ActivityDetailBinding>() {
                     setInfo(item)
                     initAdapter(item)
                 }
-
             }
-
         }
-
     }
 
     private fun initAdapter(item: Playlist) {
@@ -59,7 +59,7 @@ class DetailActivity : BaseActivity<DetailViewModel, ActivityDetailBinding>() {
 
     private fun clickListener(item: Items) {
         val intent = Intent(this, ThirdActivity::class.java)
-        intent.putExtra(Constant.ID, item.id)
+        intent.putExtra(Constant.ID, item.contentDetails?.videoId)
         startActivity(intent)
     }
 
@@ -70,10 +70,8 @@ class DetailActivity : BaseActivity<DetailViewModel, ActivityDetailBinding>() {
         }
         binding.fabBtn.setOnClickListener {
             val intent = Intent(this, ThirdActivity::class.java)
-            intent.putExtra(Constant.ID, item.items[0].id)
+            intent.putExtra(Constant.ID, item.items[0].contentDetails?.videoId)
             startActivity(intent)
         }
     }
-
-
 }

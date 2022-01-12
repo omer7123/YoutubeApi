@@ -8,6 +8,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:name="com.ripalay.App"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -30,7 +31,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.playlist.PlaylistActivity"
-            android:exported="false"></activity>
+            android:exported="false">
+
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

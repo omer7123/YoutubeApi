@@ -61,4 +61,13 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
     implementation 'androidx.core:core-ktx:1.8.0-alpha02'
+
+    // KoinDI
+    def koin_version = "2.2.3"
+    implementation "io.insert-koin:koin-android:$koin_version"
+    implementation "io.insert-koin:koin-androidx-scope:$koin_version"
+    implementation "io.insert-koin:koin-androidx-viewmodel:$koin_version"
+
+    //ExoPlayer
+    implementation 'com.google.android.exoplayer:exoplayer:2.16.1'
 }

@@ -12,20 +12,20 @@ import com.ripalay.youtubeapi.data.remote.model.Items
 import com.ripalay.youtubeapi.databinding.ActivityPlaylistBinding
 import com.ripalay.youtubeapi.data.remote.model.Playlist
 import com.ripalay.youtubeapi.ui.detail.DetailActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PlaylistActivity : BaseActivity<PlaylistViewModel, ActivityPlaylistBinding>() {
     private lateinit var playlist: Playlist
     private lateinit var adapter: PlaylistAdapter
 
-    override fun inflateVB(inflater: LayoutInflater): ActivityPlaylistBinding {
+    override val viewModel: PlaylistViewModel by viewModel()
 
+    override fun inflateVB(inflater: LayoutInflater): ActivityPlaylistBinding {
         return ActivityPlaylistBinding.inflate(layoutInflater)
     }
 
     override fun initView() {
         super.initView()
-        viewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
-
         AppPrefs(this).isOnBoard = true
         AppPrefs(this).isOnBoard.toString()
     }
@@ -33,7 +33,7 @@ class PlaylistActivity : BaseActivity<PlaylistViewModel, ActivityPlaylistBinding
     override fun initViewModel() {
         super.initViewModel()
 
-        viewModel.loading.observe(this){
+        viewModel.loading.observe(this) {
             binding.progress.isVisible = it
         }
 
@@ -43,7 +43,7 @@ class PlaylistActivity : BaseActivity<PlaylistViewModel, ActivityPlaylistBinding
                 Status.SUCCESS -> {
                     viewModel.loading.postValue(false)
                     playlist = it.data!!
-                    adapter = PlaylistAdapter(playlist.items,this::clickListener)
+                    adapter = PlaylistAdapter(playlist.items, this::clickListener)
                     binding.rv.adapter = adapter
 
 
@@ -52,7 +52,8 @@ class PlaylistActivity : BaseActivity<PlaylistViewModel, ActivityPlaylistBinding
             }
         }
     }
-    private fun clickListener(items: Items){
+
+    private fun clickListener(items: Items) {
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra(
             Constant.ID, items.id,
@@ -61,7 +62,6 @@ class PlaylistActivity : BaseActivity<PlaylistViewModel, ActivityPlaylistBinding
         startActivity(intent)
 
     }
-
 
 
 }
