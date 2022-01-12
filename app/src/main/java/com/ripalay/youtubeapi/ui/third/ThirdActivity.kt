@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.ExoPlayerLibraryInfo
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.MediaSource
@@ -33,6 +34,11 @@ class ThirdActivity : BaseActivity<ThirdViewModel, ActivityThirdBinding>() {
     override fun onStart() {
         super.onStart()
         initPlayer()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mPlayer?.stop()
     }
     override fun initViewModel() {
         super.initViewModel()
